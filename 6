@@ -1,0 +1,40 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Integer> memory = new ArrayList<>(3);
+        
+        while (true) {
+            System.out.print("Введите число (или 'q' для выхода): ");
+            String input = scanner.next();
+            
+            if (input.equalsIgnoreCase("q")) {
+                break;
+            }
+            
+            try {
+                int number = Integer.parseInt(input);
+                
+                if (memory.size() < 3) {
+                    memory.add(number);
+                    System.out.println("Добавлено: " + number);
+                } else {
+                    int minIndex = memory.indexOf(Collections.min(memory));
+                    int replaced = memory.get(minIndex);
+                    memory.set(minIndex, number);
+                    System.out.println("Заменил " + replaced + " на " + number);
+                }
+                
+                System.out.println("Текущее состояние: " + memory);
+                
+            } catch (NumberFormatException e) {
+                System.out.println("Ошибка! Введите целое число или 'q' для выхода.");
+            }
+        }
+        
+        scanner.close();
+    }
+}
