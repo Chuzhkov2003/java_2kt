@@ -1,0 +1,27 @@
+import java.util.Scanner;
+import java.util.LinkedHashSet;
+import java.util.Arrays;
+import java.util.StringJoiner;
+
+public class UniqueWords {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.print("Введите строку с повторяющимися словами: ");
+        String input = scanner.nextLine();
+        
+    
+        String[] words = input.split(" ");
+        
+        
+        LinkedHashSet<String> uniqueWords = new LinkedHashSet<>(Arrays.asList(words));
+        
+      
+        StringJoiner result = new StringJoiner(" ");
+        for (String word : uniqueWords) {
+            result.add(word);
+        }
+        
+        System.out.println("Результат: " + result.toString());
+    }
+}
